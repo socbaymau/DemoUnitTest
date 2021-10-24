@@ -13,6 +13,7 @@ WORKDIR /src
 COPY ["DemoProject/DemoProject.csproj", "DemoProject/"]
 COPY ["Data/Data.csproj", "Data/"]
 COPY ["Servers/Services.csproj", "Servers/"]
+COPY ["UnitTest/UnitTest.csproj", "UnitTest/"]
 RUN dotnet restore "DemoProject/DemoProject.csproj"
 COPY . .
 WORKDIR "/src/DemoProject"
@@ -22,10 +23,11 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 # analyze using SQ
 RUN dotnet sonarscanner begin  /o:"socbaymau" \
   /k:"socbaymau_DemoUnitTest" \
-  /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="b827dd86adc16a2475d44ef5707e2cd0b2b01500"
-RUN dotnet build "DemoProject.csproj" -c Release -o /app/build
-RUN dotnet sonarscanner end /d:sonar.login="b827dd86adc16a2475d44ef5707e2cd0b2b01500"
+  /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d1547fc5462a48792c3ec6b7fdac0b3e5d458618"
+RUN dotnet build -c Release -o out --no-restore 
+RUN dotnet sonarscanner end /d:sonar.login="d1547fc5462a48792c3ec6b7fdac0b3e5d458618"
 
+RUN dotnet test "DemoProject.csproj" --logger "trx;LogFileName=webapplication1.trx" 
 FROM build AS publish
 RUN dotnet publish "DemoProject.csproj" -c Release -o /app/publish
 
