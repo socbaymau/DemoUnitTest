@@ -16,6 +16,7 @@ COPY ["Servers/Services.csproj", "Servers/"]
 COPY ["UnitTest/UnitTest.csproj", "UnitTest/"]
 RUN dotnet restore "DemoProject/DemoProject.csproj"
 COPY . .
+RUN dotnet test UnitTest/UnitTest.csproj
 WORKDIR "/src/DemoProject"
 RUN apt-get update && apt-get install -y openjdk-11-jdk
 RUN dotnet tool install dotnet-sonarscanner --global
@@ -24,10 +25,11 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet sonarscanner begin  /o:"socbaymau" \
   /k:"socbaymau_DemoUnitTest" \
   /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d1547fc5462a48792c3ec6b7fdac0b3e5d458618"
-RUN dotnet build -c Release -o out --no-restore 
+#RUN dotnet build -c Release -o out --no-restore
+RUN dotnet build "DemoProject.csproj" -c Release -o /app/build
 RUN dotnet sonarscanner end /d:sonar.login="d1547fc5462a48792c3ec6b7fdac0b3e5d458618"
 
-RUN dotnet test "DemoProject.csproj" --logger "trx;LogFileName=webapplication1.trx" 
+#RUN dotnet test "DemoProject.csproj" --logger "trx;LogFileName=webapplication1.trx" 
 FROM build AS publish
 RUN dotnet publish "DemoProject.csproj" -c Release -o /app/publish
 

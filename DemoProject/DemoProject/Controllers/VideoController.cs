@@ -80,8 +80,8 @@ namespace DemoProject.Controllers
             return Ok(data);
         }
 
-        [HttpGet("GetVideosViewModel")]
-        public async Task<ActionResult<List<VideoViewModel>>> GetVideosViewModel()
+        [HttpGet("GetVideosViewModelAsync")]
+        public async Task<ActionResult<List<VideoViewModel>>> GetVideosViewModelAsync()
         {
             var data = await _videoService.GetAllAsync();
             //var model = data.Select(video => new VideoViewModel()
@@ -101,6 +101,27 @@ namespace DemoProject.Controllers
             }
             return Ok(list);
         }
-       
+        [HttpGet("GetVideosViewModel")]
+        public ActionResult<List<VideoViewModel>> GetVideosViewModel()
+        {
+            var data = _videoService.GetAll();
+            //var model = data.Select(video => new VideoViewModel()
+            //{
+            //    Id = video.Id,
+            //    PathName = video.PathName
+            //});
+            var list = new List<VideoViewModel>();
+            foreach (var item in data)
+            {
+                var model = new VideoViewModel
+                {
+                    Id = item.Id,
+                    PathName = item.PathName
+                };
+                list.Add(model);
+            }
+            return Ok(list);
+        }
+
     }
 }
