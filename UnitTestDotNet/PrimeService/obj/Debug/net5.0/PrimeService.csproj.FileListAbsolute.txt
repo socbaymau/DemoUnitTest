@@ -1,0 +1,12 @@
+D:\UnitTest\UnitTestDotNet\PrimeService\bin\Debug\net5.0\PrimeService.deps.json
+D:\UnitTest\UnitTestDotNet\PrimeService\bin\Debug\net5.0\PrimeService.dll
+D:\UnitTest\UnitTestDotNet\PrimeService\bin\Debug\net5.0\ref\PrimeService.dll
+D:\UnitTest\UnitTestDotNet\PrimeService\bin\Debug\net5.0\PrimeService.pdb
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.csproj.AssemblyReference.cache
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.GeneratedMSBuildEditorConfig.editorconfig
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.AssemblyInfoInputs.cache
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.AssemblyInfo.cs
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.csproj.CoreCompileInputs.cache
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.dll
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\ref\PrimeService.dll
+D:\UnitTest\UnitTestDotNet\PrimeService\obj\Debug\net5.0\PrimeService.pdb
