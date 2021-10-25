@@ -24,10 +24,10 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 # analyze using SQ
 RUN dotnet sonarscanner begin  /o:"socbaymau" \
   /k:"socbaymau_DemoUnitTest" \
-  /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="9e4bf67c123fdf85d9d2ad4b7479386127eaabbc"
-#RUN dotnet build -c Release -o out --no-restore
-RUN dotnet build "DemoProject.csproj" -c Release -o /app/build
-RUN dotnet sonarscanner end /d:sonar.login="9e4bf67c123fdf85d9d2ad4b7479386127eaabbc"
+  /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="25e481051938fef63f9d4e0b01c4295abea7f6c9"
+RUN dotnet build -c Release -o out --no-restore
+#RUN dotnet build "DemoProject.csproj" -c Release -o /app/build
+RUN dotnet sonarscanner end /d:sonar.login="25e481051938fef63f9d4e0b01c4295abea7f6c9"
 
 #RUN dotnet test "DemoProject.csproj" --logger "trx;LogFileName=webapplication1.trx" 
 FROM build AS publish
